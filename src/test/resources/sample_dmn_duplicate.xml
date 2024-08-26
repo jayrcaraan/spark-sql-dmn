@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="definitions_1ylcj3a" name="definitions" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="16.4.0">
+  <decision id="decision_10vdqrv" name="">
+    <decisionTable id="decisionTable_1xe2job" hitPolicy="RULE ORDER">
+      <input id="input1" label="credit_score" biodi:width="192">
+        <inputExpression id="inputExpression1" typeRef="number">
+          <text>credit_score</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_08fw8kq" label="loan_amount">
+        <inputExpression id="LiteralExpression_0w0s84p" typeRef="number">
+          <text>loan_amount</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="loan_status" name="loan_status" typeRef="string" biodi:width="367" />
+      <rule id="DecisionRule_0eywo5l">
+        <inputEntry id="UnaryTests_1xawo6x">
+          <text>&gt; 0.8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wnp1vp">
+          <text>&gt; 5000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kfzqu4">
+          <text>"approved"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gepq0k">
+        <inputEntry id="UnaryTests_1f47o3c">
+          <text>&lt; 0.8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07o1kl8">
+          <text>&gt; 5000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bbnkna">
+          <text>"declined"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_1fmmiq7">
+      <dmndi:DMNShape id="DMNShape_1ow8mjr" dmnElementRef="decision_10vdqrv">
+        <dc:Bounds height="80" width="180" x="40" y="60" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
