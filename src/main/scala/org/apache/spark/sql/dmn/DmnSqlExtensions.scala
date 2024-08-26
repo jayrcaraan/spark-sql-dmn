@@ -1,11 +1,9 @@
 package org.apache.spark.sql.dmn
 
-import org.apache.spark.sql.SparkSessionExtensions
-import org.apache.spark.sql.catalyst.analysis.FunctionRegistry.FunctionBuilder
-import org.apache.spark.sql.catalyst.expressions.ExpressionInfo
+import org.apache.spark.sql.{SparkSessionExtensions, SparkSessionExtensionsProvider}
 
-class DmnSqlExtensions extends (SparkSessionExtensions => Unit) {
-  def apply(sse: SparkSessionExtensions): Unit = {
+class DmnSqlExtensions extends SparkSessionExtensionsProvider {
+  override def apply(sse: SparkSessionExtensions): Unit = {
     FunctionRegistry.expressions.foreach(sse.injectFunction)
   }
 }
